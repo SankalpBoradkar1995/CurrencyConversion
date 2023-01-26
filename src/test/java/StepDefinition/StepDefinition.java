@@ -1,4 +1,4 @@
-package StepDefination;
+package StepDefinition;
 
 import static io.restassured.RestAssured.given;
 
@@ -16,13 +16,13 @@ import io.cucumber.junit.Cucumber;
 import io.restassured.RestAssured;
 
 @RunWith(Cucumber.class)
-public class StepDefination 
+public class StepDefinition 
 {
 	Function<String, BigDecimal> refToFunction;
 	ParameterPojoClass obj1;
 	String response;
-	public static BigDecimal GBP;
-	BigDecimal D;
+	public static BigDecimal currencyGBP;
+	BigDecimal currencyDogeCoin;
 	String response2;
 
 	
@@ -54,15 +54,15 @@ public class StepDefination
 	public void GetConvertedCurrencyGBP()
 	{
 		refToFunction = Utilities::JsonParserGBP;
-		GBP = refToFunction.apply(response);
+		currencyGBP = refToFunction.apply(response);
 		System.out.println("Base currency was: Guatemalan Quetzal with amount: "+obj1.getAmount());
-		System.out.println("Converted GBP are: "+GBP);
+		System.out.println("Converted GBP are: "+currencyGBP);
 	}
 	
 	@When("^User pass converted GBP to API$")
 	public void MakeApiCallD()
 	{
-		response2 = given().queryParam("amount", GBP).queryParam("id", obj1.getIdTwo())
+		response2 = given().queryParam("amount", currencyGBP).queryParam("id", obj1.getIdTwo())
 				.queryParam("convert", obj1.getConvertTwo()).header("X-CMC_PRO_API_KEY", obj1.getApiKey())
 				.header("Content-Type", "application/json").when().get(obj1.getSourceURI())
 				.then().assertThat().statusCode(200).extract()
@@ -73,9 +73,9 @@ public class StepDefination
 	public void GetConvertedCurrencyD()
 	{
 		refToFunction = Utilities::JsonParserD;
-		D = refToFunction.apply(response2);
-		System.out.println("Base currency was: GGBP with amount: "+GBP);
-		System.out.println("Converted Dogecoin are: "+D);
+		currencyDogeCoin = refToFunction.apply(response2);
+		System.out.println("Base currency was: GGBP with amount: "+currencyGBP);
+		System.out.println("Converted Dogecoin are: "+currencyDogeCoin);
 	}
 	
 }
