@@ -8,4 +8,4 @@
 4. Utilities: It has two classes 
 ->ParameterPojoClass to set and retrive query parameters required for API call
 ->Utilities it acts as implemention methods for Function interface to return converted currencies
-5.Project is java V1.8 based so have used Function inerface to provide response from api, to fetch converted values and return it back
+5. Project is java V1.8 based so have used Function inerface to provide response from api, to fetch converted values and return it back
