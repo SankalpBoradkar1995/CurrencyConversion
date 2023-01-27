@@ -3,3 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+## target folder at the top level of the project structue and paths and contents underneath it
+
+target/
+
+target/*
