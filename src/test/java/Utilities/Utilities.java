@@ -14,7 +14,7 @@ public class Utilities {
 
 	public static BigDecimal JsonParserD(String jsonResponse) {
 		JSONObject obj = new JSONObject(jsonResponse);
-		return obj.getJSONObject("data").getJSONObject("quote").getJSONObject("D")
+		return obj.getJSONObject("data").getJSONObject("quote").getJSONObject("DOGE")
 				.getBigDecimal("price");
 	}
 }
